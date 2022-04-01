@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import Ideas from './Ideas'
+import IdeaCard from './ideaCard'
+import './ideaCard.css'
+import Form from './Form'
+// import apiData from './apiCalls'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      ideas: []
+    }
+  }
+
+  // componentDidMount() {
+  //   apiData.getAllData()
+  //   .then(data => this.setState({
+  //     ideas: data.results
+  //   }))
+  // }
+
+  addIdea = (newIdea) => {
+    this.setState({ ideas: [...this.state.ideas, newIdea] })
+  }
+
+  deleteIdea = (id) => {
+    const filteredIdeas = this.state.ideas.filter(idea => idea.id != id)
+    this.setState({ ideas: filteredIdeas })
+  }
+
+  render() {
+    return (
+      <main className="App">
+        <h1>Ideabox</h1>
+        <Form addIdea={this.addIdea}/>
+        <Ideas ideas={this.state.ideas} deleteIdea={this.deleteIdea}/>
+      </main>
+    )
+  }
 }
 
-export default App;
+export default App
