@@ -1,11 +1,11 @@
 import React from 'react'
 import './ideaCard.css'
 
-const IdeaCard = ({ title, url, id, deleteIdea }) => {
+const IdeaCard = ({ title, description, id, deleteIdea }) => {
   return (
     <div className='card'>
       <h3>{title}</h3>
-      <img src={url} />
+      <h4>{description}</h4>
       <button onClick={() => deleteIdea(id)}>Trash</button>
     </div>
   )
