@@ -4,7 +4,6 @@ import Ideas from './Ideas'
 import IdeaCard from './ideaCard'
 import './ideaCard.css'
 import Form from './Form'
-// import apiData from './apiCalls'
 
 class App extends Component {
   constructor() {
@@ -13,13 +12,6 @@ class App extends Component {
       ideas: []
     }
   }
-
-  // componentDidMount() {
-  //   apiData.getAllData()
-  //   .then(data => this.setState({
-  //     ideas: data.results
-  //   }))
-  // }
 
   addIdea = (newIdea) => {
     this.setState({ ideas: [...this.state.ideas, newIdea] })
